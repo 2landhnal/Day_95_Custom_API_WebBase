@@ -44,7 +44,7 @@ class Companies(db.Model):
    date = db.Column(db.String(250), nullable=False)
    color = db.Column(db.String(250), nullable=False)
 
-db.create_all()
+# db.create_all()
 
 def create():
    with open('static/data.csv', 'r') as read_obj:
@@ -122,24 +122,24 @@ def update():
       comp.date = date[:10]
       db.session.commit()
 
-create()
+# create()
 # update()
 
-# @app.route('/', methods=['POST', 'GET'])
-# def home():
-#    coms = Companies.query.all()
-#    if request.method == 'POST':
-#       print('POST')
-#       try:
-#          update()
-#          coms = Companies.query.all()
-#          return redirect(url_for('home'))
-#       except:
-#          return redirect(url_for('home'))
-#    return render_template('index.html', coms=coms)
-#
-# if __name__ == '__main__':
-#    app.run(debug=True)
+@app.route('/', methods=['POST', 'GET'])
+def home():
+   coms = Companies.query.all()
+   if request.method == 'POST':
+      print('POST')
+      try:
+         update()
+         coms = Companies.query.all()
+         return redirect(url_for('home'))
+      except:
+         return redirect(url_for('home'))
+   return render_template('index.html', coms=coms)
+
+if __name__ == '__main__':
+   app.run(debug=True)
 
 ### Sample ###
 # with open('static/data.csv', 'r') as read_obj:
