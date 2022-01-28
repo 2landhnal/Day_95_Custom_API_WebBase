@@ -47,7 +47,7 @@ class Companies(db.Model):
 db.create_all()
 
 def create():
-   with open('static/sample.csv', 'r') as read_obj:
+   with open('static/data.csv', 'r') as read_obj:
       rows = reader(read_obj)
       rows = list(rows)
 
@@ -85,7 +85,7 @@ def create():
       db.session.commit()
 
 def update():
-   with open('static/sample.csv', 'r') as read_obj:
+   with open('static/data.csv', 'r') as read_obj:
       rows = reader(read_obj)
       rows = list(rows)
 
