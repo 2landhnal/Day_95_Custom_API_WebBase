@@ -139,7 +139,7 @@ def home():
    return render_template('index.html', coms=coms)
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run(host='0.0.0.0', port=5000)
 
 ### Sample ###
 # with open('static/data.csv', 'r') as read_obj:
